@@ -1,1 +1,101 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Auth System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-toggle">
+                <button id="login-toggle" class="active">Login</button>
+                <button id="register-toggle">Register</button>
+            </div>
 
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form">
+                <div class="form-group floating">
+                    <input type="email" id="login-email" required aria-label="Email address">
+                    <label for="login-email">Email</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="form-group floating">
+                    <input type="password" id="login-password" required aria-label="Password">
+                    <label for="login-password">Password</label>
+                    <span class="focus-border"></span>
+                    <i class="toggle-password fas fa-eye" aria-hidden="true"></i>
+                </div>
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" aria-label="Remember me"> Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-gradient">Login</button>
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#" id="show-register">Register</a></p>
+                </div>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form hidden">
+                <div class="form-group floating">
+                    <input type="email" id="register-email" required aria-label="Email address">
+                    <label for="register-email">Email</label>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="form-group floating">
+                    <input type="password" id="register-password" required aria-label="Password">
+                    <label for="register-password">Password</label>
+                    <span class="focus-border"></span>
+                    <i class="toggle-password fas fa-eye" aria-hidden="true"></i>
+                </div>
+                <div class="form-group floating">
+                    <input type="password" id="register-confirm" required aria-label="Confirm password">
+                    <label for="register-confirm">Confirm Password</label>
+                    <span class="focus-border"></span>
+                </div>
+                <button type="submit" class="btn-gradient">Send OTP</button>
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+                </div>
+            </form>
+
+            <!-- OTP Verification Form -->
+            <form id="otp-form" class="auth-form hidden">
+                <h3>Verify Your Email</h3>
+                <p class="otp-instruction">We've sent a 6-digit code to <span id="otp-email-display"></span></p>
+                
+                <div class="otp-container">
+                    <input type="text" maxlength="1" class="otp-input" aria-label="First digit of OTP" data-index="0">
+                    <input type="text" maxlength="1" class="otp-input" aria-label="Second digit of OTP" data-index="1">
+                    <input type="text" maxlength="1" class="otp-input" aria-label="Third digit of OTP" data-index="2">
+                    <input type="text" maxlength="1" class="otp-input" aria-label="Fourth digit of OTP" data-index="3">
+                    <input type="text" maxlength="1" class="otp-input" aria-label="Fifth digit of OTP" data-index="4">
+                    <input type="text" maxlength="1" class="otp-input" aria-label="Sixth digit of OTP" data-index="5">
+                </div>
+                
+                <div class="otp-timer">
+                    <p>Code expires in: <span id="countdown">02:00</span></p>
+                    <button type="button" id="resend-otp" class="btn-text" disabled>Resend OTP</button>
+                </div>
+                
+                <button type="submit" class="btn-gradient">Verify & Register</button>
+            </form>
+        </div>
+
+        <div class="admin-link">
+            <a href="admin.html" class="btn-admin">Admin Panel</a>
+        </div>
+    </div>
+
+    <!-- Success/Error Notification -->
+    <div id="notification" class="notification hidden" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
